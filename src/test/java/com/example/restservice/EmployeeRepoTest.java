@@ -17,7 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 
 @SpringBootTest
-public class RestServiceApplicationTests {
+public class EmployeeRepoTest {
 
     @Mock
     private EmployeeManager employeeManager;
@@ -40,7 +40,7 @@ public class RestServiceApplicationTests {
     void addEmployee() {
         EmployeeManager employeeManager = new EmployeeManager();
         int employeeCount = getEmployeeCount(employeeManager);
-        Employee employee = new Employee("djones3", "Daria", "Jones", "dariajones@gmail.com", "Software developer");
+        Employee employee = new Employee(4, "Nacho", "Libre", "nachooo@gmail.com", "Luchador");
         employeeManager.addEmployee(employee);
         assert(employeeCount + 1 == getEmployeeCount(employeeManager));
     }
@@ -49,7 +49,7 @@ public class RestServiceApplicationTests {
     @BeforeEach void setUp()
     {
         this.employeeManager = new EmployeeManager();
-        Employee newEmployee = new Employee("djones3", "Daria", "Jones", "dariajones@gmail.com", "Software developer");
+        Employee newEmployee = new Employee(4, "Nacho", "Libre", "nachooo@gmail.com", "Luchador");
         this.employeeManager.addEmployee(newEmployee);
     }
 
@@ -60,7 +60,7 @@ public class RestServiceApplicationTests {
         for (int i=0; i<employees.size(); i++)
         {
             Employee employee = employees.get(i);
-            if (employee.getId() == "djones3")
+            if (employee.getId() == 4)
             {
                 return;
             }
@@ -75,7 +75,7 @@ public class RestServiceApplicationTests {
         for (int i=0; i<employees.size(); i++)
         {
             Employee employee = employees.get(i);
-            if (employee.getFirstName() == "Daria")
+            if (employee.getFirstName() == "Nacho")
             {
                 return;
             }
@@ -90,7 +90,7 @@ public class RestServiceApplicationTests {
         for (int i=0; i<employees.size(); i++)
         {
             Employee employee = employees.get(i);
-            if (employee.getLastName() == "Jones")
+            if (employee.getLastName() == "Libre")
             {
                 return;
             }
@@ -105,7 +105,7 @@ public class RestServiceApplicationTests {
         for (int i=0; i<employees.size(); i++)
         {
             Employee employee = employees.get(i);
-            if (employee.getEmail() == "dariajones@gmail.com")
+            if (employee.getEmail() == "nachooo@gmail.com")
             {
                 return;
             }
@@ -120,7 +120,7 @@ public class RestServiceApplicationTests {
         for (int i=0; i<employees.size(); i++)
         {
             Employee employee = employees.get(i);
-            if (employee.getTitle() == "Software developer")
+            if (employee.getTitle() == "Luchador")
             {
                 return;
             }
